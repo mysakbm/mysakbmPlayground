@@ -9,7 +9,7 @@ import category_encoders as ce
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score as auc
-from catboost import CatBoostClassifier, Pool
+from catboost import CatBoost,CatBoostClassifier, Pool
 
 # In[] ---- Enviroment Settings ------------
 pd.options.display.max_columns = 30
@@ -91,4 +91,20 @@ preds_class = model.predict(test_cbe)
 preds_proba = model.predict_proba(test_cbe)
 print("class = ", preds_class)
 print("proba = ", preds_proba)
+auc(target_test, preds_class)
+
+
+# In[] .....CLASS CatBoost
+model = CatBoost()
+
+# train the model
+model.fit(train_pool,
+          eval_set = (test, target_test))
+
+# make the prediction using the resulting model
+preds_class = model.predict(test_pool)
+preds_proba = model.predict_proba(test_pool)
+print("class = ", preds_class)
+print("proba = ", preds_proba)
+
 auc(target_test, preds_class)
