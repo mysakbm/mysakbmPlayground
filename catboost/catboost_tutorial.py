@@ -31,7 +31,7 @@ train_pool = Pool(train, target_train, cat_features=categorical_features_indices
 test_pool = Pool(test, cat_features = categorical_features_indices)
 
 
-# In[] .....
+# In[] Pool
 model = CatBoostClassifier(iterations=20,
                            depth=2,
                            learning_rate=1,
@@ -51,7 +51,7 @@ print("proba = ", preds_proba)
 auc(target_test, preds_class)
 
 
-# In[]
+# In[] No Pool
 model = cb.CatBoostClassifier(iterations = 20)
 
 model.fit(train, target_train,
