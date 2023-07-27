@@ -15,7 +15,7 @@ from catboost import CatBoost,CatBoostClassifier, Pool
 pd.options.display.max_columns = 30
 
 # In[] ---- Cat in dat dataset -------------------------------------------------
-data = pd.read_csv("../../data/cat-in-the-dat/train.csv")
+data = pd.read_csv("./data/cat-in-the-dat/train.csv")
 train, test = train_test_split(data, test_size = 0.2, random_state = 1985)
 
 target_train = train['target']
