@@ -298,11 +298,11 @@ df.loc[:, 'category_representation'] = df['category'].map(mean_encode)
                     \hline
                     3 & A & 0.5    & 1 \\
                     \hline
-                    4 & B & 0.3532 & 0 \\
+                    4 & B & 0.33 & 0 \\
                     \hline
-                    5 & B & 0.3532 & 1 \\
+                    5 & B & 0.33 & 1 \\
                     \hline
-                    6 & B & 0.3532 & 0 \\
+                    6 & B & 0.33 & 0 \\
                     \hline
                     7 & C & 0.5    & 1 \\
                     \hline
@@ -518,7 +518,7 @@ test_cbe = CBE_encoder.transform(test[feature_list])
             \pause
             \item The number of dimensions will be far less than One Hot Encoding
             \pause
-            \item Data are transformed into fewer features -> information loss.
+            \item Data are transformed into fewer features - information loss.
             \pause
             \item Different categorical values could be represented by the same Hash values.
             \pause
@@ -582,23 +582,23 @@ X_encoded = glmm_encoder.transform(train["month"])
         My recommendation will be to try each of these with the smaller datasets and
         then decide where to focus on tuning the encoding process.
     \end{frame}
-
-    \begin{frame}
-        \frametitle{Short Guide-Lines}
-        \begin{itemize}
-            \item For \textbf{nominal} columns try \emph{OneHot, Hashing, LeaveOneOut, Target} encoding.
-            \pause
-            \item \textbf{Avoid OneHot for high cardinality columns and decision tree-based algorithms}.
-            \pause
-            \item For \textbf{ordinal} columns try \emph{Ordinal, Binary, OneHot, LeaveOneOut,
-                Target}.
-            \pause
-            \item \emph{Helmert, Sum, BackwardDifference and Polynomial} are less likely to be
-            helpful, but if you have time or theoretic reason you might want to try them.
-            \pause
-            \item For \emph{regression} tasks, Target and LeaveOneOut probably won't work well.
-        \end{itemize}
-    \end{frame}
+%
+%    \begin{frame}
+%        \frametitle{Short Guide-Lines}
+%        \begin{itemize}
+%            \item For \textbf{nominal} columns try \emph{OneHot, Hashing, LeaveOneOut, Target} encoding.
+%            \pause
+%            \item \textbf{Avoid OneHot for high cardinality columns and decision tree-based algorithms}.
+%            \pause
+%            \item For \textbf{ordinal} columns try \emph{Ordinal, Binary, OneHot, LeaveOneOut,
+%                Target}.
+%            \pause
+%            \item \emph{Helmert, Sum, BackwardDifference and Polynomial} are less likely to be
+%            helpful, but if you have time or theoretic reason you might want to try them.
+%            \pause
+%            \item For \emph{regression} tasks, Target and LeaveOneOut probably won't work well.
+%        \end{itemize}
+%    \end{frame}
 
 
     \section{XGB with Cross-Validation}
