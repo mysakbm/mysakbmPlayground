@@ -25,13 +25,12 @@ target_test = test['target']
 test.drop(['target', 'id'], axis=1, inplace=True)
 
 # In[]  Catboost Model
-# categorical_features_indices = np.where(train.dtypes != np.int)[0]
 categorical_features_indices = list(range(len(list(train))))[3:]
 train_pool = Pool(train, target_train, cat_features=categorical_features_indices)
 test_pool = Pool(test, cat_features = categorical_features_indices)
 
 
-# In[] Pool
+# In[] Pool: Pouziti funkce pool, ktera plni podobnou funkci jako dmatrix pro XGB.
 model = CatBoostClassifier(iterations=20,
                            depth=2,
                            learning_rate=1,
@@ -51,7 +50,7 @@ print("proba = ", preds_proba)
 auc(target_test, preds_class)
 
 
-# In[] No Pool
+# In[] Bez pouziti funkce Pool to funguje taky:
 model = cb.CatBoostClassifier(iterations = 20)
 
 model.fit(train, target_train,
@@ -60,8 +59,6 @@ model.fit(train, target_train,
           use_best_model = True,
           verbose = True
           )
-
-# In[] -------------------------------------------------------------------------
 
 preds_class = model.predict(test)
 preds_proba = model.predict_proba(test)
@@ -94,7 +91,7 @@ print("proba = ", preds_proba)
 auc(target_test, preds_class)
 
 
-# In[] .....CLASS CatBoost
+# In[] .....CLASS CatBoost - zjevne nejaky wrapper.
 model = CatBoost()
 
 # train the model
