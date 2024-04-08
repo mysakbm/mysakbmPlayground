@@ -9,13 +9,13 @@ import category_encoders as ce
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score as auc
-from catboost import CatBoostClassifier, Pool
+from catboost import CatBoost,CatBoostClassifier, Pool
 
 # In[] ---- Enviroment Settings ------------
 pd.options.display.max_columns = 30
 
 # In[] ---- Cat in dat dataset -------------------------------------------------
-data = pd.read_csv("../../data/cat-in-the-dat/train.csv")
+data = pd.read_csv("./data/cat-in-the-dat/train.csv")
 train, test = train_test_split(data, test_size = 0.2, random_state = 1985)
 
 target_train = train['target']
@@ -25,13 +25,12 @@ target_test = test['target']
 test.drop(['target', 'id'], axis=1, inplace=True)
 
 # In[]  Catboost Model
-# categorical_features_indices = np.where(train.dtypes != np.int)[0]
 categorical_features_indices = list(range(len(list(train))))[3:]
 train_pool = Pool(train, target_train, cat_features=categorical_features_indices)
 test_pool = Pool(test, cat_features = categorical_features_indices)
 
 
-# In[] .....
+# In[] Pool: Pouziti funkce pool, ktera plni podobnou funkci jako dmatrix pro XGB.
 model = CatBoostClassifier(iterations=20,
                            depth=2,
                            learning_rate=1,
@@ -51,7 +50,7 @@ print("proba = ", preds_proba)
 auc(target_test, preds_class)
 
 
-# In[]
+# In[] Bez pouziti funkce Pool to funguje taky:
 model = cb.CatBoostClassifier(iterations = 20)
 
 model.fit(train, target_train,
@@ -60,8 +59,6 @@ model.fit(train, target_train,
           use_best_model = True,
           verbose = True
           )
-
-# In[] -------------------------------------------------------------------------
 
 preds_class = model.predict(test)
 preds_proba = model.predict_proba(test)
@@ -91,4 +88,20 @@ preds_class = model.predict(test_cbe)
 preds_proba = model.predict_proba(test_cbe)
 print("class = ", preds_class)
 print("proba = ", preds_proba)
+auc(target_test, preds_class)
+
+
+# In[] .....CLASS CatBoost - zjevne nejaky wrapper.
+model = CatBoost()
+
+# train the model
+model.fit(train_pool,
+          eval_set = (test, target_test))
+
+# make the prediction using the resulting model
+preds_class = model.predict(test_pool)
+preds_proba = model.predict_proba(test_pool)
+print("class = ", preds_class)
+print("proba = ", preds_proba)
+
 auc(target_test, preds_class)
