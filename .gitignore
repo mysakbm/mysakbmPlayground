@@ -25,3 +25,5 @@
 /image_recognition/object_detection/.idea/misc.xml
 /image_recognition/object_detection/.idea/modules.xml
 /image_recognition/object_detection/.idea/object_detection.iml
+/image_recognition/object_detection/yolo/runs/
+/hyperoptimization/.ipynb_checkpoints/hyperoptimalizace_parametru-checkpoint.ipynb
