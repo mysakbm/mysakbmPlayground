@@ -9,8 +9,9 @@ import cv2
 import numpy as np
 import os
 
-os.chdir("image_recognition/object_detection/yolo")
+from utils import time_run
 
+os.chdir("image_recognition/object_detection/yolo")
 
 # # View all settings
 # print(settings)
