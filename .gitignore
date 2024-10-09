@@ -29,3 +29,13 @@ pyspark/iris.data
 pyspark/cereal.csv
 plotting/some_graph.jpg
 environment
+/kolmogorov_arnold_networks/creditcard.csv
+/text/.env
+/text/.env_user
+/text/pomocne_soubory/pretrained_models/model_c4.data-00000-of-00001
+/text/pomocne_soubory/pretrained_models/model_c4.index
+/text/pomocne_soubory/pretrained_models/model_qa3.data-00000-of-00001
+/text/pomocne_soubory/pretrained_models/model_qa3.index
+/text/source_notebooks/generative_ai_with_llm/W1.pdf
+/text/source_notebooks/generative_ai_with_llm/W2.pdf
+/text/source_notebooks/generative_ai_with_llm/W3.pdf
