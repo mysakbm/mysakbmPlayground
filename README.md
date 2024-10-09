@@ -1,2 +1,2 @@
 # mysakbmPlayground
-my personal playground using git
+my personal playground
