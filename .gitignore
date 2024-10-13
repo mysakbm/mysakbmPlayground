@@ -25,8 +25,8 @@ __pycache__
 3_machine_learning/saved_tensor.t
 python_general/soubor.html
 3_machine_learning/e5_onnx_large
-pyspark/iris.data
-pyspark/cereal.csv
+4_pyspark/iris.data
+4_pyspark/cereal.csv
 2_plotting/some_graph.jpg
 environment
 /kolmogorov_arnold_networks/creditcard.csv
