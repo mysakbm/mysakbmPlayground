@@ -27,7 +27,7 @@ python_general/soubor.html
 machine_learning/e5_onnx_large
 pyspark/iris.data
 pyspark/cereal.csv
-plotting/some_graph.jpg
+2_plotting/some_graph.jpg
 environment
 /kolmogorov_arnold_networks/creditcard.csv
 /text/.env
