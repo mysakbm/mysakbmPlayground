@@ -13,7 +13,7 @@ from tensorflow.keras.optimizers import Adam
 
 # In[]
 # Load the dataset
-data = open('./coursera_tensorflow_nlp/data/Laurences_generated_poetry.txt').read()
+data = open('./tensorflow/data/Laurences_generated_poetry.txt').read()
 
 # Lowercase and split the text
 corpus = data.lower().split("\n")
