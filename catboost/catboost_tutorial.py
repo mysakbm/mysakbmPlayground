@@ -69,7 +69,7 @@ auc(target_test, preds_class)
 
 
 
-# In[] --- Transformace promennych nejprv a az pak 10_catboost
+# In[] --- Transformace promennych nejprv a az pak catboost
 
 CBE_encoder = ce.CatBoostEncoder(verbose=1, cols = list(train.columns)[3:])
 train_cbe = CBE_encoder.fit_transform(train, target_train)
