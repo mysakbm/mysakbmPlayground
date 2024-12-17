@@ -46,7 +46,7 @@ environment
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/inspectionProfiles/Project_Default.xml
 6_image_recognition/object_detection/datasets/*
-6_image_recognition/object_detection/datasets/*.*
+15_image_recognition/object_detection/datasets/*.*
 6_image_recognition/object_detection/old_code/stamps_registration/.DS_Store
 6_image_recognition/object_detection/old_code/u_net_stamps/.DS_Store
 6_image_recognition/object_detection/old_code/.DS_Store
