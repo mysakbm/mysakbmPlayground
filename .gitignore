@@ -51,5 +51,8 @@ environment
 6_image_recognition/object_detection/old_code/u_net_stamps/.DS_Store
 6_image_recognition/object_detection/old_code/.DS_Store
 6_image_recognition/object_detection/.DS_Store
-15_image_recognition/object_detection/signver_code/*.*
-/15_image_recognition/object_detection/signver_code/*.*
+6_image_recognition/object_detection/signver_code/*.*
+*.DS_Store
+/data/beach_demand_forecast/*.*
+/data/beach_demand_forecast/*
+data/beach_demand_forecast/*
