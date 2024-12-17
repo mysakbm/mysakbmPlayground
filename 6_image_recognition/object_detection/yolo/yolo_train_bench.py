@@ -5,7 +5,7 @@ from ultralytics import YOLO
 #%% Environment setup
 
 # Project path
-project_path = './15_image_recognition/object_detection/yolo/'
+project_path = './6_image_recognition/object_detection/yolo/'
 os.chdir(project_path)
 
 dataset_path = '../datasets/signatures_dataset/SignverOD/data/'
