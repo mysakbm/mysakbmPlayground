@@ -29,7 +29,7 @@ __pycache__
 4_pyspark/cereal.csv
 2_plotting/some_graph.jpg
 environment
-/10_kolmogorov_arnold_networks/creditcard.csv
+/4_kolmogorov_arnold_networks/creditcard.csv
 9_text/.env
 9_text/.env_user
 9_text/pomocne_soubory/pretrained_models/model_c4.data-00000-of-00001
