@@ -118,7 +118,7 @@ def merge_nearby_rectangles(rectangles, nearness):
 
     return merged
 
-!wget 'https://d2skn5554g4boz.cloudfront.net/2020-website/658/3470213/large/3470213_2.jpg'
+# !wget 'https://d2skn5554g4boz.cloudfront.net/2020-website/658/3470213/large/3470213_2.jpg'
 
 import cv2
 from google.colab.patches import cv2_imshow
