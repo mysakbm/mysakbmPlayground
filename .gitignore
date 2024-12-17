@@ -54,3 +54,5 @@ environment
 6_image_recognition/object_detection/signver_code/*.*
 /6_image_recognition/object_detection/signver_code/*.*
 /data/beach_demand_forecast/*.*
+data/beach_demand_forecast/*.*
+/data/beach_demand_forecast/*
