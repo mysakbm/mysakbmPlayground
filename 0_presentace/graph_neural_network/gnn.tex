@@ -1,0 +1,248 @@
+\documentclass{beamer}
+
+%\usetheme[hideothersubsections]{UNLTheme}
+\beamertemplatenavigationsymbolsempty
+
+\mode<presentation> {
+    \usetheme[hideothersubsections]{UNLTheme}
+    %\usetheme{montpellier}
+    \setbeamercovered{transparent}
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{multimedia}
+\usepackage{amsbsy}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{amsthm}
+%\usepackage{showkeys}
+\usepackage{gensymb}
+\usepackage{amsmath} % balíček pro pokročilou matem. sazbu
+\usepackage{epsfig} % balíčky pro vkládání grafických souborů typu EPS
+\usepackage{graphicx}
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=Python,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
+
+\newcommand{\e}{\mathtt{e}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\proceseta}{\boldsymbol{\eta}}
+\newcommand{\dr}{\, \mathrm{d}}
+\newtheorem{veta}{Theorem}[section]
+\newtheorem{defin}[veta]{Definition}
+
+\title[Intro to GNN]{Graph Neural Networks: An Introduction}
+\author{Michael Mateju}
+\institute{Institute/Organization}
+\date{\today}
+
+% % For better math spacing and fonts
+% \setlength{\abovedisplayskip}{5pt}
+% \setlength{\belowdisplayskip}{5pt}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item Graph Neural Networks (GNNs) are gaining popularity in AI.
+        \item Leading companies like Google, Uber, and Twitter are adopting GNNs.
+        \item GNNs are effective in modeling relationships in complex datasets.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Advantages of Graph Machine Learning}
+    \begin{itemize}
+        \item GNNs excel at capturing complex relationships \textbf{beyond Euclidean space}.
+        \item They allow for \textbf{node embeddings} that represent entities in a meaningful way.
+        \item They improve performance in \textbf{graph-based tasks} like link prediction and clustering.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Applications of GNNs}
+    \begin{itemize}
+        \item \textbf{Drug Discovery:} Predicting molecular interactions for new medicines.
+        \item \textbf{Social Networks:} Recommending friends and filtering misinformation.
+        \item \textbf{Fraud Detection:} Identifying fraudulent transactions in banking.
+        \item \textbf{Traffic Optimization:} Predicting road congestion and enhancing navigation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Graph Neural Networks in Data Mining}
+    \begin{itemize}
+        \item GNNs enhance traditional \textbf{data mining techniques} by understanding \textbf{relational data}.
+        \item They can uncover hidden patterns in \textbf{large-scale graphs}.
+        \item Applications in:
+        \begin{itemize}
+            \item \textbf{Anomaly Detection:} Identifying outliers in \textbf{financial transactions}
+            \item \textbf{Knowledge Graphs:} Enhancing search engines with better \textbf{semantic understanding}.
+            \item \textbf{Clustering:} Grouping similar entities based on relationships.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Why GNNs Matter in 2024}
+    \begin{itemize}
+        \item GNNs are transitioning from research to \textbf{industry-wide adoption}.
+        \item They offer new ways to \textbf{leverage graph-based data} across different fields.
+        \item The \textbf{future of AI} will involve more \textbf{graph learning} to improve predictions and decision-making.
+    \end{itemize}
+\end{frame}
+
+% Slide 1: Introduction
+\begin{frame}{What are Graph Neural Networks?}
+    \begin{itemize}
+        \item Neural networks designed for \textbf{graph-structured data}.
+        \item Unlike traditional models, they process \textbf{nodes and edges}.
+        \item Applications: \textbf{Social networks, molecules, recommendation systems, knowledge graphs}.
+        \item GNNs leverage message passing and graph convolution techniques to learn representations.
+    \end{itemize}
+\end{frame}
+
+% Slide 2: Graph Representation
+\begin{frame}{Graph Representation}
+    \textbf{A graph is represented as:}
+    \[ G = (V, E) \]
+    \begin{itemize}
+        \item \( V \) - Set of \textbf{nodes (vertices)}.
+        \item \( E \) - Set of \textbf{edges} (connections).
+        \item Adjacency Matrix \( A \):
+        \[ A_{ij} = \begin{cases} 1, & \text{if edge exists between } i \text{ and } j \\ 0, & \text{otherwise} \end{cases} \]
+        \item Feature matrix \( X \) where \( X_i \) represents node features.
+    \end{itemize}
+\end{frame}
+
+% Slide 3: GNN Mechanism
+\begin{frame}{How Do GNNs Work?}
+    \textbf{Message Passing (Graph Convolution):}
+    \[ h_i^{(l+1)} = \sigma \left( W^{(l)} \sum_{j \in \mathcal{N}(i)} \frac{h_j^{(l)}}{c_{ij}} + B^{(l)} h_i^{(l)} \right) \]
+    \begin{itemize}
+        \item Nodes update their states by aggregating information from neighbors.
+        \item Iterative process across layers.
+        \item Preserves local connectivity and captures relational dependencies.
+    \end{itemize}
+\end{frame}
+
+% Slide 4: Graph Convolutional Network (GCN)
+\begin{frame}{Graph Convolutional Networks (GCN)}
+    \textbf{Update Rule:}
+    \[ H^{(l+1)} = \sigma \left( \tilde{D}^{-1/2} \tilde{A} \tilde{D}^{-1/2} H^{(l)} W^{(l)} \right) \]
+    \begin{itemize}
+        \item \( \tilde{A} = A + I \) (Adjacency matrix with self-loops)
+        \item \( \tilde{D} \) is the degree matrix
+        \item \( W^{(l)} \) is a trainable weight matrix
+        \item Introduces smoothing and enables feature propagation.
+    \end{itemize}
+\end{frame}
+
+% Slide 5: Graph Attention Networks (GAT)
+\begin{frame}{Graph Attention Networks (GAT)}
+    \textbf{Attention Mechanism:}
+    \[ \alpha_{ij} = \frac{\exp(LeakyReLU(a^T [W h_i || W h_j]))}{\sum_{k \in \mathcal{N}(i)} \exp(LeakyReLU(a^T [W h_i || W h_k]))} \]
+    \begin{itemize}
+        \item Uses learnable attention weights.
+        \item Dynamically assigns importance to different neighbors.
+        \item Improves performance on heterogeneous graphs.
+    \end{itemize}
+\end{frame}
+
+% Slide 6: GraphSAGE
+\begin{frame}{GraphSAGE: Scalable Learning on Graphs}
+    \begin{itemize}
+        \item GraphSAGE samples neighbors instead of using all neighbors.
+        \item Aggregation function (e.g., mean, max-pooling, LSTM-based).
+        \item Computationally efficient for large graphs.
+    \end{itemize}
+\end{frame}
+
+% Slide 7: Training GNNs
+\begin{frame}{Training Graph Neural Networks}
+    \begin{itemize}
+        \item Loss function: Cross-entropy, mean squared error, contrastive loss.
+        \item Backpropagation through graph layers.
+        \item Mini-batch training for large-scale graphs.
+    \end{itemize}
+    \textbf{Training Steps:}
+    \begin{itemize}
+        \item For each training epoch:
+        \begin{itemize}
+            \item For each node \( v_i \) in batch:
+            \begin{itemize}
+                \item Aggregate features from neighbors.
+                \item Apply non-linear transformation.
+                \item Compute loss and update weights.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 8: Applications
+\begin{frame}{Applications of GNNs}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Application Area} & \textbf{Use Cases} \\
+        \hline
+        Social Networks & Friend recommendations, community detection \\
+        Biology & Drug discovery, protein interactions \\
+        Finance & Fraud detection, credit risk modeling \\
+        Recommendations & Personalized content recommendations \\
+        Knowledge Graphs & Semantic search, entity linking \\
+        \hline
+    \end{tabular}
+\end{frame}
+
+% Slide 9: Challenges
+\begin{frame}{Challenges in GNNs}
+    \begin{itemize}
+        \item \textbf{Scalability} - Large graphs require optimized memory usage.
+        \item \textbf{Over-smoothing} - Deep networks make node representations indistinguishable.
+        \item \textbf{Graph Heterogeneity} - Different node types require specialized architectures.
+        \item \textbf{Dynamic Graphs} - Many real-world graphs evolve over time.
+        \item \textbf{Limited Label Availability} - Semi-supervised learning often required.
+    \end{itemize}
+\end{frame}
+
+% Slide 10: Summary
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item GNNs extend deep learning to graphs using message passing.
+        \item Various architectures: \textbf{GCN, GAT, GraphSAGE}.
+        \item Applications in social networks, chemistry, finance, and more.
+        \item Challenges include scalability and over-smoothing.
+    \end{itemize}
+\end{frame}
+
+% Slide 11: Thank You
+\begin{frame}{Thank You!}
+    \centering
+    Questions?
+\end{frame}
+
+\end{document}
