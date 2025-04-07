@@ -52,9 +52,8 @@ environment
 6_image_recognition/object_detection/old_code/.DS_Store
 6_image_recognition/object_detection/.DS_Store
 6_image_recognition/object_detection/signver_code/*.*
-/6_image_recognition/object_detection/signver_code/*.*
+*.DS_Store
 /data/beach_demand_forecast/*.*
-data/beach_demand_forecast/*.*
 /data/beach_demand_forecast/*
 data/beach_demand_forecast/*
 /5_text/pomocne_soubory/podminky_debetnich_karet.pdf
