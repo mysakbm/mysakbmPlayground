@@ -11,7 +11,7 @@ import os
 
 from utils import time_run
 
-os.chdir("6_image_recognition/object_detection/yolo")
+os.chdir("computer_vision/object_detection/yolo")
 
 # # View all settings
 # print(settings)
